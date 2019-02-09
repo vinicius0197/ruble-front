@@ -7,11 +7,24 @@
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.3"
   },
+  "devDependencies": {
+    "autoprefixer": "^7.1.4",
+    "concat": "^1.0.3",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "postcss-cli": "^4.1.1",
+    "svg-sprite-loader": "^4.1.3"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:sass": "node-sass src/sass/main.scss src/App.css -w",
+    "compile:sass": "node-sass src/sass/main.scss src/App.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' src/App.css -o src/App.prefix.css",
+    "compress:css": "node-sass src/App.prefix.css src/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css"
   },
   "eslintConfig": {
     "extends": "react-app"
