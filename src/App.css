@@ -185,12 +185,41 @@ html {
     padding: 0.8rem 1rem;
     border-top: 1px solid #2ec0c4;
     text-align: right; }
+  .table__category-group:hover > .table__category-name > .table__category-form > .table__category-input--header {
+    border: 1px dashed #d8d8d8; }
+  .table__category-element:hover > .table__element-name > .table__category-form > .table__category-input {
+    border: 1px dashed #d8d8d8; }
   .table__category-group:hover {
     background-color: #d6eff6; }
   .table__category-name {
     flex: 0 0 55%;
     text-align: left;
     font-weight: 600; }
+  .table__category-input {
+    background-color: inherit;
+    color: inherit;
+    transition: .1s ease-in-out;
+    border: 1px dashed transparent;
+    padding: 0.1rem 0.5rem; }
+    .table__category-input--header {
+      font-weight: 600;
+      background-color: inherit;
+      color: inherit;
+      transition: .1s ease-in-out;
+      border: 1px dashed transparent;
+      padding: 0.1rem 0.5rem; }
+    .table__category-input--header:hover {
+      border: 1px dashed #d8d8d8;
+      background: #fff; }
+    .table__category-input--header:focus {
+      background: #fff;
+      border: 1px solid #167ccb; }
+  .table__category-input:hover {
+    border: 1px dashed #d8d8d8;
+    background: #fff; }
+  .table__category-input:focus {
+    background: #fff;
+    border: 1px solid #167ccb; }
   .table__category-budgeted {
     flex: 0 0 15%; }
   .table__category-activity {

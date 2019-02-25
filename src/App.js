@@ -86,14 +86,22 @@ class App extends Component {
 
                 <div className="table__content">
                   <ul className="table__category-group">
-                    <li className="table__category-name">Compras do mês</li>
+                    <li className="table__category-name">
+                      <form action="#" className="table__category-form">
+                        <input type="text" className="table__category-input--header" value="Compras do mês"/>
+                      </form>
+                    </li>
                     <li className="table__category-budgeted">R$210.25</li>
                     <li className="table__category-activity">R$35.20</li>
                     <li className="table__category-available">R$508.98</li>
                   </ul>
 
                   <ul class="table__category-element">
-                    <li className="table__element-name">Carro</li>
+                    <li className="table__element-name">
+                      <form action="#" className="table__category-form">
+                        <input type="text" className="table__category-input" value="Carro"/>
+                      </form>
+                    </li>
                     <li className="table__element-budgeted">R$145.75</li>
                     <li className="table__element-activity">R$25.69</li>
                     <li className="table__element-available">R$86.00</li>

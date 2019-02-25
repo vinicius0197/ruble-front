@@ -242,6 +242,14 @@
         text-align: right;
     }
 
+    &__category-group:hover > &__category-name > &__category-form > &__category-input--header {
+        border: 1px dashed #d8d8d8;
+    }
+
+    &__category-element:hover > &__element-name > &__category-form > &__category-input {
+        border: 1px dashed #d8d8d8;
+    }
+
     &__category-group:hover {
         background-color: darken(#e5f5f9, 3.5);
     }
@@ -250,6 +258,47 @@
         flex: 0 0 55%;
         text-align: left;
         font-weight: 600;
+    }
+
+    &__category-form {
+
+    }
+
+    &__category-input {
+        background-color: inherit;
+        color: inherit;
+        transition: .1s ease-in-out;
+        border: 1px dashed transparent;
+        padding: 0.1rem 0.5rem;
+        
+        &--header {
+            font-weight: 600;
+            background-color: inherit;
+            color: inherit;
+            transition: .1s ease-in-out;
+            border: 1px dashed transparent;
+            padding: 0.1rem 0.5rem;
+        }
+
+        &--header:hover {
+            border: 1px dashed #d8d8d8;
+            background: #fff;
+        }
+
+        &--header:focus {
+            background: #fff;
+            border: 1px solid $tertiray-color;
+        }
+    }
+
+    &__category-input:hover {
+        border: 1px dashed #d8d8d8;
+        background: #fff;
+    }
+
+    &__category-input:focus {
+        background: #fff;
+        border: 1px solid $tertiray-color;
     }
 
     &__category-budgeted {
