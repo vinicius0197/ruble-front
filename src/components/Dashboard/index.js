@@ -8,6 +8,25 @@ import { data } from '../../constants/index';
 class CategoryGroup extends Component {
   constructor(props) {
     super(props);
+    this.textInput = React.createRef();
+
+    this.state = {
+      category_name: "",
+    }
+  }
+
+  componentDidMount() {
+    this.setState({category_name: this.props.category_name});
+  }
+
+  onCategoryNameUpdate = (event) => {
+    this.setState({category_name: event.target.value});
+  }
+
+  handleEnterPress = (event) => {
+    if (event.key == 'Enter') {
+      this.textInput.current.blur();
+    }
   }
 
   render() {
@@ -15,7 +34,14 @@ class CategoryGroup extends Component {
       <ul className="table__category-group">
         <li className="table__category-name">
           <form action="#" className="table__category-form">
-            <input type="text" className="table__category-input--header" value={this.props.category_name}/>
+            <input
+              type="text"
+              className="table__category-input--header"
+              value={this.state.category_name}
+              onChange={this.onCategoryNameUpdate}
+              onKeyPress={this.handleEnterPress}
+              ref={this.textInput}
+            />
           </form>
           <div className="table__add-icon-container"><PlusIcon className="table__add-icon" /></div>
         </li>
@@ -56,11 +82,26 @@ export default class Dashboard extends Component {
     };
   }
 
+  addCategoryGroup = () => {
+    const newCategoryGroup = {
+      "category_name": "",
+      "budgeted_total": 0.0,
+      "activity": 0.0,
+      "available": 0.0,
+      "elements": []
+    }
+
+    this.setState({data: [...this.state.data, newCategoryGroup]})
+  }
+
   render() {
     return (
       <div className="dashboard">
       <div className="options">
-        <button className="options__add-category">
+        <button
+          className="options__add-category"
+          onClick={this.addCategoryGroup}
+        >
           + Grupo de Categoria
         </button>
 
