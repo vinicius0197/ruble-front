@@ -254,7 +254,13 @@
         background-color: darken(#e5f5f9, 3.5);
     }
 
+    &__category-group:hover > &__category-name > &__add-icon-container > &__add-icon {
+        fill: $tertiray-color;
+    }
+
     &__category-name {
+        display: flex;
+        align-items: center;
         flex: 0 0 55%;
         text-align: left;
         font-weight: 600;
@@ -262,6 +268,18 @@
 
     &__category-form {
 
+    }
+
+    &__add-icon-container {
+        padding-left: 1rem;
+        cursor: pointer;
+    }
+
+    &__add-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        fill: transparent;
+        transition: .1s ease-in-out;
     }
 
     &__category-input {

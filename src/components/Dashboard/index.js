@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ReactComponent as LeftArrow } from '../../img/circle-left.svg';
 import { ReactComponent as RightArrow } from '../../img/circle-right.svg';
+import { ReactComponent as PlusIcon } from '../../img/plus.svg';
 
 import { data } from '../../constants/index';
 
@@ -16,6 +17,7 @@ class CategoryGroup extends Component {
           <form action="#" className="table__category-form">
             <input type="text" className="table__category-input--header" value={this.props.category_name}/>
           </form>
+          <div className="table__add-icon-container"><PlusIcon className="table__add-icon" /></div>
         </li>
         <li className="table__category-budgeted">R${this.props.budgeted_total}</li>
         <li className="table__category-activity">R${this.props.activity}</li>

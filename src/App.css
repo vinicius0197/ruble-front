@@ -191,10 +191,22 @@ html {
     border: 1px dashed #d8d8d8; }
   .table__category-group:hover {
     background-color: #d6eff6; }
+  .table__category-group:hover > .table__category-name > .table__add-icon-container > .table__add-icon {
+    fill: #167ccb; }
   .table__category-name {
+    display: flex;
+    align-items: center;
     flex: 0 0 55%;
     text-align: left;
     font-weight: 600; }
+  .table__add-icon-container {
+    padding-left: 1rem;
+    cursor: pointer; }
+  .table__add-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: transparent;
+    transition: .1s ease-in-out; }
   .table__category-input {
     background-color: inherit;
     color: inherit;
