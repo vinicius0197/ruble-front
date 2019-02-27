@@ -109,7 +109,15 @@ class CategoryElement extends Component {
             />
           </form>
         </li>
-        <li className="table__element-budgeted">R${this.props.element_budget}</li>
+        <li className="table__element-budgeted">
+          <form action="#" className="table__element-mybudget">
+            <input
+            type="text"
+            className="table__category-mybudget-input"
+            value={this.props.element_budget}
+            />
+          </form>
+        </li>
         <li className="table__element-activity">R${this.props.element_activity}</li>
         <li className="table__element-available">R${this.props.element_available}</li>
       </ul>

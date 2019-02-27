@@ -199,6 +199,22 @@ html {
     flex: 0 0 55%;
     text-align: left;
     font-weight: 600; }
+  .table__category-mybudget-input {
+    background-color: inherit;
+    color: inherit;
+    border: 1px dashed transparent;
+    padding: 0.1rem 0.5rem;
+    width: 8rem;
+    text-align: right;
+    font-family: inherit;
+    transition: .1s ease-in-out; }
+  .table__category-mybudget-input:hover {
+    background-color: #fff; }
+  .table__element-mybudget {
+    display: flex;
+    justify-content: flex-end; }
+  .table__category-element:hover > .table__element-budgeted > .table__element-mybudget > .table__category-mybudget-input {
+    border: 1px dashed #d8d8d8; }
   .table__add-icon-container {
     padding-left: 1rem;
     cursor: pointer; }

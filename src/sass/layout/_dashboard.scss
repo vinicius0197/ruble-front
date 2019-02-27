@@ -270,6 +270,30 @@
 
     }
 
+    &__category-mybudget-input {
+        background-color: inherit;
+        color: inherit;
+        border: 1px dashed transparent;
+        padding: 0.1rem 0.5rem;
+        width: 8rem;
+        text-align: right;
+        font-family: inherit;
+        transition: .1s ease-in-out;
+    }
+
+    &__category-mybudget-input:hover {
+        background-color: #fff;
+    }
+
+    &__element-mybudget {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__category-element:hover > &__element-budgeted > &__element-mybudget > &__category-mybudget-input {
+        border: 1px dashed #d8d8d8;
+    }
+
     &__add-icon-container {
         padding-left: 1rem;
         cursor: pointer;
