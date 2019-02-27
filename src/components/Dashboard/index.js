@@ -70,14 +70,19 @@ class CategoryElement extends Component {
   constructor(props) {
     super(props);
     this.textInput = React.createRef();
+    this.budgetInput = React.createRef();
 
     this.state = {
       element_name: "",
+      budget_value: 0,
     }
   }
 
   componentDidMount() {
-    this.setState({element_name: this.props.element_name});
+    this.setState({
+      element_name: this.props.element_name,
+      element_budget: this.props.element_budget
+    });
 
     if (this.props.createdElement === true) {
       this.textInput.current.focus();
@@ -88,10 +93,29 @@ class CategoryElement extends Component {
     this.setState({element_name: event.target.value});
   }
 
+  onBudgetElementUpdate = (event) => {
+    this.setState({element_budget: event.target.value});
+  }
+
   handleEnterPress = (event) => {
     if (event.key == 'Enter') {
       this.textInput.current.blur();
     }
+  }
+
+  handleBudgetEnterPress = (event) => {
+    if (event.key == 'Enter') {
+      this.budgetInput.current.blur();
+    }
+  }
+
+  handleBudgetFocus = (event) => {
+    event.target.select();
+  }
+
+  handleBudgetInput = (event) => {
+    let formattedValue = parseFloat(event.target.value).toFixed(2);
+    this.setState({element_budget: formattedValue});
   }
 
   render() {
@@ -112,9 +136,14 @@ class CategoryElement extends Component {
         <li className="table__element-budgeted">
           <form action="#" className="table__element-mybudget">
             <input
-            type="text"
-            className="table__category-mybudget-input"
-            value={this.props.element_budget}
+              type="text"
+              className="table__category-mybudget-input"
+              value={this.state.element_budget}
+              onChange={this.onBudgetElementUpdate}
+              onFocus={this.handleBudgetFocus}
+              onKeyPress={this.handleBudgetEnterPress}
+              onBlur={this.handleBudgetInput}
+              ref={this.budgetInput}
             />
           </form>
         </li>
