@@ -96,7 +96,7 @@ class CategoryElement extends Component {
 
   render() {
     return (
-      <ul class="table__category-element">
+      <ul className="table__category-element">
         <li className="table__element-name">
           <form action="#" className="table__category-form">
             <input
@@ -130,6 +130,7 @@ export default class Dashboard extends Component {
 
   addCategoryGroup = () => {
     const newCategoryGroup = {
+      "id": Math.round(Math.random()*1000000), // temporary solution for random ids
       "category_name": "",
       "budgeted_total": 0.0,
       "activity": 0.0,
@@ -146,6 +147,7 @@ export default class Dashboard extends Component {
   addCategoryElement = (id) => {
     let newData = this.state.data;
     const newCategoryElement = {
+      "id": Math.round(Math.random()*1000000), // temporary solution for random ids
       "element_name": "",
       "element_budget": 0.0,
       "element_activity": 0.0,
@@ -200,6 +202,7 @@ export default class Dashboard extends Component {
               <div key={'divkey' + item.category_name} className="category-block">
                 <div className="category-row">
                   <CategoryGroup
+                    key={'group' + item.id}
                     category_name={item.category_name}
                     budgeted_total={item.budgeted_total}
                     activity={item.activity}
@@ -213,6 +216,7 @@ export default class Dashboard extends Component {
                 <div className="element-row">
                   {item.elements.map(el => 
                     <CategoryElement
+                      key={'el' + el.id}
                       element_name={el.element_name}
                       element_budget={el.element_budget}
                       element_activity={el.element_activity}
