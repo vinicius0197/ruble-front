@@ -17,6 +17,10 @@ class CategoryGroup extends Component {
 
   componentDidMount() {
     this.setState({category_name: this.props.category_name});
+    
+    if (this.props.createdGroup === true ) {
+      this.textInput.current.focus();
+    }
   }
 
   onCategoryNameUpdate = (event) => {
@@ -56,6 +60,25 @@ class CategoryGroup extends Component {
 class CategoryElement extends Component {
   constructor(props) {
     super(props);
+    this.textInput = React.createRef();
+
+    this.state = {
+      element_name: "",
+    }
+  }
+
+  componentDidMount() {
+    this.setState({element_name: this.props.element_name});
+  }
+
+  onElementNameUpdate = (event) => {
+    this.setState({element_name: event.target.value});
+  }
+
+  handleEnterPress = (event) => {
+    if (event.key == 'Enter') {
+      this.textInput.current.blur();
+    }
   }
 
   render() {
@@ -63,7 +86,14 @@ class CategoryElement extends Component {
       <ul class="table__category-element">
         <li className="table__element-name">
           <form action="#" className="table__category-form">
-            <input type="text" className="table__category-input" value={this.props.element_name}/>
+            <input
+              type="text"
+              className="table__category-input"
+              value={this.state.element_name}
+              onChange={this.onElementNameUpdate}
+              onKeyPress={this.handleEnterPress}
+              ref={this.textInput}
+            />
           </form>
         </li>
         <li className="table__element-budgeted">R${this.props.element_budget}</li>
@@ -77,8 +107,10 @@ class CategoryElement extends Component {
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      data: data
+      data: data,
+      createdCategoryGroup: false,
     };
   }
 
@@ -91,7 +123,10 @@ export default class Dashboard extends Component {
       "elements": []
     }
 
-    this.setState({data: [...this.state.data, newCategoryGroup]})
+    this.setState({
+      data: [...this.state.data, newCategoryGroup],
+      createdCategoryGroup: true,
+    });
   }
 
   render() {
@@ -134,6 +169,7 @@ export default class Dashboard extends Component {
                     budgeted_total={item.budgeted_total}
                     activity={item.activity}
                     available={item.available}
+                    createdGroup={this.state.createdCategoryGroup}
                   />
                 </div>
 
