@@ -33,6 +33,10 @@ class CategoryGroup extends Component {
     }
   }
 
+  createCategory = (id) => {
+    this.props.addElement(id);
+  }
+
   render() {
     return (
       <ul className="table__category-group">
@@ -47,7 +51,12 @@ class CategoryGroup extends Component {
               ref={this.textInput}
             />
           </form>
-          <div className="table__add-icon-container"><PlusIcon className="table__add-icon" /></div>
+          <div className="table__add-icon-container">
+            <PlusIcon
+              className="table__add-icon"
+              onClick={() => this.createCategory(this.props.id)}
+              />
+          </div>
         </li>
         <li className="table__category-budgeted">R${this.props.budgeted_total}</li>
         <li className="table__category-activity">R${this.props.activity}</li>
@@ -69,6 +78,10 @@ class CategoryElement extends Component {
 
   componentDidMount() {
     this.setState({element_name: this.props.element_name});
+
+    if (this.props.createdElement === true) {
+      this.textInput.current.focus();
+    }
   }
 
   onElementNameUpdate = (event) => {
@@ -111,6 +124,7 @@ export default class Dashboard extends Component {
     this.state = {
       data: data,
       createdCategoryGroup: false,
+      createdNewElement: false,
     };
   }
 
@@ -126,6 +140,27 @@ export default class Dashboard extends Component {
     this.setState({
       data: [...this.state.data, newCategoryGroup],
       createdCategoryGroup: true,
+    });
+  }
+
+  addCategoryElement = (id) => {
+    let newData = this.state.data;
+    const newCategoryElement = {
+      "element_name": "",
+      "element_budget": 0.0,
+      "element_activity": 0.0,
+      "element_available": 0.0 
+    };
+
+    // Search in state for corresponding category group id
+    let index = this.state.data.findIndex(el => el.id === id);
+
+    let newElement = [...this.state.data[index].elements, newCategoryElement];
+    newData[index].elements = newElement;
+
+    this.setState({
+      data: newData,
+      createdNewElement: true,
     });
   }
 
@@ -169,7 +204,9 @@ export default class Dashboard extends Component {
                     budgeted_total={item.budgeted_total}
                     activity={item.activity}
                     available={item.available}
+                    id={item.id}
                     createdGroup={this.state.createdCategoryGroup}
+                    addElement={this.addCategoryElement}
                   />
                 </div>
 
@@ -180,6 +217,7 @@ export default class Dashboard extends Component {
                       element_budget={el.element_budget}
                       element_activity={el.element_activity}
                       element_available={el.element_available}
+                      createdElement={this.state.createdNewElement}
                     />
                   )}
                 </div>

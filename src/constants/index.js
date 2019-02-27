@@ -1,5 +1,6 @@
 export const data = [
   {
+    "id": 1,
     "category_name": "Compras do mês",
     "budgeted_total": 210.25,
     "activity": 35.20,
@@ -32,6 +33,7 @@ export const data = [
     ]
   },
   {
+    "id": 2,
     "category_name": "Esportes",
     "budgeted_total": 210.25,
     "activity": 35.20,
