@@ -4,7 +4,8 @@ import './App.css';
 
 import Sidebar from './components/Sidebar/index';
 import Navbar from './components/Navbar/index';
-import Dashboard from './components/Dashboard/index';
+
+import BudgetTableContainer from './containers/BudgetTableContainer';
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
           <Navbar />
           <main className="content">
             <Switch>
-              <Route path="/budget" component={Dashboard} />
+              <Route path="/budget" component={BudgetTableContainer} />
             </Switch>
           </main>
         </div>

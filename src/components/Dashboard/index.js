@@ -5,7 +5,7 @@ import { ReactComponent as PlusIcon } from '../../img/plus.svg';
 
 import { data } from '../../constants/index';
 
-class CategoryGroup extends Component {
+export class CategoryGroup extends Component {
   constructor(props) {
     super(props);
     this.textInput = React.createRef();
@@ -67,7 +67,7 @@ class CategoryGroup extends Component {
   }
 }
 
-class CategoryElement extends Component {
+export class CategoryElement extends Component {
   constructor(props) {
     super(props);
     this.textInput = React.createRef();
@@ -156,7 +156,7 @@ class CategoryElement extends Component {
   }
 }
 
-export default class Dashboard extends Component {
+export default class BudgetTable extends Component {
   constructor(props) {
     super(props);
 
@@ -165,22 +165,6 @@ export default class Dashboard extends Component {
       createdCategoryGroup: false,
       createdNewElement: false,
     };
-  }
-
-  addCategoryGroup = () => {
-    const newCategoryGroup = {
-      "id": Math.round(Math.random()*1000000), // temporary solution for random ids
-      "category_name": "",
-      "budgeted_total": 0.0,
-      "activity": 0.0,
-      "available": 0.0,
-      "elements": []
-    }
-
-    this.setState({
-      data: [...this.state.data, newCategoryGroup],
-      createdCategoryGroup: true,
-    });
   }
 
   addCategoryElement = (id) => {
@@ -212,7 +196,7 @@ export default class Dashboard extends Component {
       <div className="options">
         <button
           className="options__add-category"
-          onClick={this.addCategoryGroup}
+          onClick={this.props.onCreateCategoryClick}
         >
           + Grupo de Categoria
         </button>
@@ -237,7 +221,7 @@ export default class Dashboard extends Component {
         </ul>
 
         <div className="table__content">
-          {this.state.data.map(item => {
+          {this.props.categories.map(item => {
             return (
               <div key={'divkey' + item.category_name} className="category-block">
                 <div className="category-row">
