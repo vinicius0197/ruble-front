@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import Sidebar from './components/Sidebar/index';
@@ -14,7 +15,9 @@ class App extends Component {
         <div className="main">
           <Navbar />
           <main className="content">
-            <Dashboard />
+            <Switch>
+              <Route path="/budget" component={Dashboard} />
+            </Switch>
           </main>
         </div>
       </div>

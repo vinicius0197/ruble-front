@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { ReactComponent as BookIcon } from '../../img/book.svg';
 import { ReactComponent as DollarIcon } from '../../img/coin-dollar.svg';
@@ -23,18 +24,25 @@ export default class Sidebar extends Component {
           <span>Sumário</span>
         </li>
 
-        <li className="sidebar__item">
-          <DollarIcon className="sidebar__icon"/>
-          <span>Orçamento</span>
-        </li>
+        <Link to={`/budget`}>
+          <li className="sidebar__item">
+            <DollarIcon className="sidebar__icon"/>
+            <span>Orçamento</span>
+          </li>
+        </Link>
+
         <li className="sidebar__item">
           <ClipboardIcon className="sidebar__icon"/>
           <span>Relatórios</span>
         </li>
-        <li className="sidebar__item">
-          <FileIcon className="sidebar__icon"/>
-          <span>Contas</span>
-        </li>
+
+        <Link to={`/accounts`}>
+          <li className="sidebar__item">
+            <FileIcon className="sidebar__icon"/>
+            <span>Contas</span>
+          </li>
+        </Link>
+
         <li className="sidebar__item">
           <BubbleIcon className="sidebar__icon"/>
           <span>Central de Ajuda</span>
@@ -44,8 +52,7 @@ export default class Sidebar extends Component {
           <span>Minha Conta</span>
         </li>
       </ul>
-
-    </nav>
+      </nav>
     )
   }
 }

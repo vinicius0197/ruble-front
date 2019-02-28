@@ -49,6 +49,7 @@ class CategoryGroup extends Component {
               onChange={this.onCategoryNameUpdate}
               onKeyPress={this.handleEnterPress}
               ref={this.textInput}
+              placeholder="Grupo de Categoria"
             />
           </form>
           <div className="table__add-icon-container">
@@ -130,6 +131,7 @@ class CategoryElement extends Component {
               onChange={this.onElementNameUpdate}
               onKeyPress={this.handleEnterPress}
               ref={this.textInput}
+              placeholder="Categoria"
             />
           </form>
         </li>
@@ -188,7 +190,8 @@ export default class Dashboard extends Component {
       "element_name": "",
       "element_budget": 0.0,
       "element_activity": 0.0,
-      "element_available": 0.0 
+      "element_available": 0.0,
+      "transactions": []
     };
 
     // Search in state for corresponding category group id
