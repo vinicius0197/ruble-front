@@ -4,6 +4,7 @@ import { ReactComponent as RightArrow } from '../../img/circle-right.svg';
 import { ReactComponent as PlusIcon } from '../../img/plus.svg';
 
 import { data } from '../../constants/index';
+const axios = require('axios');
 
 export class CategoryGroup extends Component {
   constructor(props) {
@@ -37,6 +38,23 @@ export class CategoryGroup extends Component {
     this.props.addElement(id);
   }
 
+  sendData = () => {
+    const newCategory = {
+      "category_name": this.state.category_name,
+      "budgeted_total": "0.00",
+      "available": "0.00",
+      "activity": "0.00",
+    };
+
+    axios.post('http://127.0.0.1:8000/budget/', newCategory)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <ul className="table__category-group">
@@ -50,6 +68,7 @@ export class CategoryGroup extends Component {
               onKeyPress={this.handleEnterPress}
               ref={this.textInput}
               placeholder="Grupo de Categoria"
+              onBlur={this.sendData}
             />
           </form>
           <div className="table__add-icon-container">
@@ -167,6 +186,21 @@ export default class BudgetTable extends Component {
     };
   }
 
+  addCategory = () => {
+    const newCategory = {
+      "category_name": "",
+      "budgeted_total": "0.00",
+      "available": "0.00",
+      "activity": "0.00",
+      "elements": []
+    };
+
+    this.setState({
+      data: [...this.state.data, newCategory],
+    });
+    this.setState({ createdCategoryGroup: true });
+  }
+
   addCategoryElement = (id) => {
     let newData = this.state.data;
     const newCategoryElement = {
@@ -190,19 +224,21 @@ export default class BudgetTable extends Component {
     });
   }
 
-  componentDidMount() {
-    const axios = require('axios');
-
+  fetchData = () => {
     axios.get('http://127.0.0.1:8000/budget.json')
-      .then((response) => {
-        this.setState({
-          data: response.data,
-        });
-        console.log(this.state.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      })
+    .then((response) => {
+      this.setState({
+        data: response.data,
+      });
+      console.log(this.state.data);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  }
+
+  componentDidMount() {
+    this.fetchData();
   }
 
   render() {
@@ -212,7 +248,7 @@ export default class BudgetTable extends Component {
       <div className="options">
         <button
           className="options__add-category"
-          onClick={this.props.onCreateCategoryClick}
+          onClick={this.addCategory}
         >
           + Grupo de Categoria
         </button>
@@ -247,7 +283,6 @@ export default class BudgetTable extends Component {
                     budgeted_total={item.budgeted_total}
                     activity={item.activity}
                     available={item.available}
-                    // id={item.id}
                     createdGroup={this.state.createdCategoryGroup}
                     addElement={this.addCategoryElement}
                   />
