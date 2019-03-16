@@ -28,7 +28,7 @@ export class CategoryGroup extends Component {
   }
 
   handleEnterPress = (event) => {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       this.textInput.current.blur();
     }
   }
@@ -75,7 +75,7 @@ export class CategoryElement extends Component {
 
     this.state = {
       element_name: "",
-      budget_value: 0,
+      element_budget: 0,
     }
   }
 
@@ -99,13 +99,13 @@ export class CategoryElement extends Component {
   }
 
   handleEnterPress = (event) => {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       this.textInput.current.blur();
     }
   }
 
   handleBudgetEnterPress = (event) => {
-    if (event.key == 'Enter') {
+    if (event.key === 'Enter') {
       this.budgetInput.current.blur();
     }
   }
@@ -190,6 +190,21 @@ export default class BudgetTable extends Component {
     });
   }
 
+  componentDidMount() {
+    const axios = require('axios');
+
+    axios.get('http://127.0.0.1:8000/budget.json')
+      .then((response) => {
+        this.setState({
+          data: response.data,
+        });
+        console.log(this.state.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+  }
+
   render() {
     const {data} = this.state;
     return (
@@ -224,7 +239,7 @@ export default class BudgetTable extends Component {
         <div className="table__content">
           {data.map(item => {
             return (
-              <div key={'divkey' + item.category_name} className="category-block">
+              <div key={'divkey' + item.id} className="category-block">
                 <div className="category-row">
                   <CategoryGroup
                     key={'group' + item.id}
@@ -244,8 +259,8 @@ export default class BudgetTable extends Component {
                       key={'el' + el.id}
                       element_name={el.element_name}
                       element_budget={el.element_budget}
-                      element_activity={el.element_activity}
-                      element_available={el.element_available}
+                      element_activity={el.activity}
+                      element_available={el.available}
                       createdElement={this.state.createdNewElement}
                     />
                   )}
