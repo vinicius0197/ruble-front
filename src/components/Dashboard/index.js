@@ -3,7 +3,6 @@ import { ReactComponent as LeftArrow } from '../../img/circle-left.svg';
 import { ReactComponent as RightArrow } from '../../img/circle-right.svg';
 import { ReactComponent as PlusIcon } from '../../img/plus.svg';
 
-// import { data } from '../../constants/index';
 const axios = require('axios');
 
 export class CategoryGroup extends Component {
