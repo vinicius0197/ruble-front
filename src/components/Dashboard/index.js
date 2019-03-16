@@ -3,7 +3,7 @@ import { ReactComponent as LeftArrow } from '../../img/circle-left.svg';
 import { ReactComponent as RightArrow } from '../../img/circle-right.svg';
 import { ReactComponent as PlusIcon } from '../../img/plus.svg';
 
-import { data } from '../../constants/index';
+// import { data } from '../../constants/index';
 const axios = require('axios');
 
 export class CategoryGroup extends Component {
@@ -46,13 +46,24 @@ export class CategoryGroup extends Component {
       "activity": "0.00",
     };
 
-    axios.post('http://127.0.0.1:8000/budget/', newCategory)
+    if(this.props.id == null) {
+      axios.post('http://127.0.0.1:8000/budget/', newCategory)
       .then((response) => {
         console.log(response);
       })
       .catch((error) => {
         console.log(error);
       });
+    }
+    else {
+      axios.patch('http://127.0.0.1:8000/budget/' + this.props.id, newCategory)
+        .then(response => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   render() {
@@ -133,9 +144,39 @@ export class CategoryElement extends Component {
     event.target.select();
   }
 
-  handleBudgetInput = (event) => {
+  sendData = () => {
+    const newElement = {
+      "element_name": this.state.element_name,
+      "element_budget": this.state.element_budget,
+      "activity": "0.0",
+      "available": "0.0",
+      "category": this.props.category_id
+    };
+
+    if(this.props.el_id == null) {
+      axios.post('http://127.0.0.1:8000/element/', newElement)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+    else {
+      axios.patch('http://127.0.0.1:8000/element/' + this.props.el_id, newElement)
+        .then(response => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+
+  handleInput = (event) => {
     let formattedValue = parseFloat(event.target.value).toFixed(2);
     this.setState({element_budget: formattedValue});
+    this.sendData();
   }
 
   render() {
@@ -151,6 +192,7 @@ export class CategoryElement extends Component {
               onKeyPress={this.handleEnterPress}
               ref={this.textInput}
               placeholder="Categoria"
+              onBlur={this.sendData}
             />
           </form>
         </li>
@@ -163,7 +205,7 @@ export class CategoryElement extends Component {
               onChange={this.onBudgetElementUpdate}
               onFocus={this.handleBudgetFocus}
               onKeyPress={this.handleBudgetEnterPress}
-              onBlur={this.handleBudgetInput}
+              onBlur={this.handleInput}
               ref={this.budgetInput}
             />
           </form>
@@ -180,7 +222,7 @@ export default class BudgetTable extends Component {
     super(props);
 
     this.state = {
-      data: data,
+      data: [],
       createdCategoryGroup: false,
       createdNewElement: false,
     };
@@ -204,12 +246,10 @@ export default class BudgetTable extends Component {
   addCategoryElement = (id) => {
     let newData = this.state.data;
     const newCategoryElement = {
-      "id": Math.round(Math.random()*1000000), // temporary solution for random ids
       "element_name": "",
       "element_budget": 0.0,
       "element_activity": 0.0,
       "element_available": 0.0,
-      "transactions": []
     };
 
     // Search in state for corresponding category group id
@@ -279,6 +319,7 @@ export default class BudgetTable extends Component {
                 <div className="category-row">
                   <CategoryGroup
                     key={'group' + item.id}
+                    id={item.id}
                     category_name={item.category_name}
                     budgeted_total={item.budgeted_total}
                     activity={item.activity}
@@ -292,6 +333,8 @@ export default class BudgetTable extends Component {
                   {item.elements.map(el => 
                     <CategoryElement
                       key={'el' + el.id}
+                      category_id={item.id}
+                      el_id={el.id}
                       element_name={el.element_name}
                       element_budget={el.element_budget}
                       element_activity={el.activity}
