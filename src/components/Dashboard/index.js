@@ -191,6 +191,7 @@ export default class BudgetTable extends Component {
   }
 
   render() {
+    const {data} = this.state;
     return (
       <div className="dashboard">
       <div className="options">
@@ -221,7 +222,7 @@ export default class BudgetTable extends Component {
         </ul>
 
         <div className="table__content">
-          {this.props.categories.map(item => {
+          {data.map(item => {
             return (
               <div key={'divkey' + item.category_name} className="category-block">
                 <div className="category-row">
@@ -231,7 +232,7 @@ export default class BudgetTable extends Component {
                     budgeted_total={item.budgeted_total}
                     activity={item.activity}
                     available={item.available}
-                    id={item.id}
+                    // id={item.id}
                     createdGroup={this.state.createdCategoryGroup}
                     addElement={this.addCategoryElement}
                   />
