@@ -153,14 +153,16 @@ export class CategoryElement extends Component {
       "category": this.props.category_id
     };
 
-    if(this.props.el_id == null) {
+    if(this.props.createdElement === true) {
       axios.post('http://127.0.0.1:8000/element/', newElement)
       .then((response) => {
+        this.props.fetchData();
         console.log(response);
       })
       .catch((error) => {
         console.log(error);
       });
+      this.props.disableElementCreated();
     }
     else {
       axios.patch('http://127.0.0.1:8000/element/' + this.props.el_id, newElement)
@@ -282,6 +284,12 @@ export default class BudgetTable extends Component {
     });
   }
 
+  disableElementCreated = () => {
+    this.setState({
+      createdNewElement: false,
+    });
+  }
+
   componentDidMount() {
     this.fetchData();
   }
@@ -348,6 +356,8 @@ export default class BudgetTable extends Component {
                       element_activity={el.activity}
                       element_available={el.available}
                       createdElement={this.state.createdNewElement}
+                      disableElementCreated={this.disableElementCreated}
+                      fetchData={this.fetchData}
                     />
                   )}
                 </div>
