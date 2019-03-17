@@ -45,14 +45,15 @@ export class CategoryGroup extends Component {
       "activity": "0.00",
     };
 
-    if(this.props.id == null) {
+    if(this.props.createdGroup === true) {
       axios.post('http://127.0.0.1:8000/budget/', newCategory)
       .then((response) => {
-        console.log(response);
+        this.props.fetchData();
       })
       .catch((error) => {
         console.log(error);
       });
+      this.props.disableCreated();
     }
     else {
       axios.patch('http://127.0.0.1:8000/budget/' + this.props.id, newCategory)
@@ -269,10 +270,15 @@ export default class BudgetTable extends Component {
       this.setState({
         data: response.data,
       });
-      console.log(this.state.data);
     })
     .catch(function(error) {
       console.log(error);
+    });
+  }
+
+  disableCreated = () => {
+    this.setState({
+      createdCategoryGroup: false,
     });
   }
 
@@ -281,7 +287,8 @@ export default class BudgetTable extends Component {
   }
 
   render() {
-    const {data} = this.state;
+    const { data } = this.state;
+
     return (
       <div className="dashboard">
       <div className="options">
@@ -325,6 +332,8 @@ export default class BudgetTable extends Component {
                     available={item.available}
                     createdGroup={this.state.createdCategoryGroup}
                     addElement={this.addCategoryElement}
+                    disableCreated={this.disableCreated}
+                    fetchData={this.fetchData}
                   />
                 </div>
 
