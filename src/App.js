@@ -10,6 +10,7 @@ import BudgetTableContainer from './containers/BudgetTableContainer';
 class App extends Component {
   render() {
     return (
+      <div>
       <div className="wrapper">
         <Sidebar />
 
@@ -21,6 +22,8 @@ class App extends Component {
             </Switch>
           </main>
         </div>
+
+      </div>
       </div>
     );
   }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import AccountPopup from '../../components/Popup/index';
 import { ReactComponent as LeftArrow } from '../../img/circle-left.svg';
 import { ReactComponent as RightArrow } from '../../img/circle-right.svg';
 import { ReactComponent as PlusIcon } from '../../img/plus.svg';
@@ -309,11 +311,12 @@ export default class BudgetTable extends Component {
             + Grupo de Categoria
           </button>
 
-          <button
+          <a
+            href="#popup"
             className="options__add-category"
             >
             + Nova Conta
-          </button>
+          </a>
         </div>
 
         <div className="options__calendar">
@@ -375,6 +378,7 @@ export default class BudgetTable extends Component {
           })}
         </div>
       </div>
+      <AccountPopup />
     </div>
     )
   }
