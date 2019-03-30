@@ -229,7 +229,14 @@ export default class BudgetTable extends Component {
       data: [],
       createdCategoryGroup: false,
       createdNewElement: false,
+      showPopup: false
     };
+  }
+
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
   addCategory = () => {
@@ -311,12 +318,12 @@ export default class BudgetTable extends Component {
             + Grupo de Categoria
           </button>
 
-          <a
-            href="#popup"
+          <button
             className="options__add-category"
+            onClick={this.togglePopup}
             >
             + Nova Conta
-          </a>
+          </button>
         </div>
 
         <div className="options__calendar">
@@ -378,7 +385,13 @@ export default class BudgetTable extends Component {
           })}
         </div>
       </div>
-      <AccountPopup />
+      {this.state.showPopup ? 
+        <AccountPopup 
+          closePopup={this.togglePopup}
+          showPopup={this.state.showPopup}
+        />
+        : null
+      }
     </div>
     )
   }

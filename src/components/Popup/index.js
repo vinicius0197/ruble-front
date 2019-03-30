@@ -4,8 +4,14 @@ export default class AccountPopup extends Component {
   render() {
     return(
       <div className="popup" id="popup">
-        <div className="popup__content">
-          <div className="popup__title">Adicionar Nova Conta</div>
+        <div className={this.props.showPopup ? "popup__content" : null}>
+          <div className="popup__header">
+            <div className="popup__title">Adicionar Nova Conta</div>
+            <div
+              class="popup__close"
+              onClick={() => this.props.closePopup()}
+            >&times;</div>
+          </div>
           <hr />
           <div className="popup__text">
             <span>Pronto para adicionar uma nova conta? Basta configurar as opções abaixo:</span>
