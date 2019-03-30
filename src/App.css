@@ -118,6 +118,10 @@ html {
     transition: all .3s; }
   .sidebar__item:hover .sidebar__icon {
     fill: #fff; }
+  .sidebar__divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); }
 
 .navbar {
   height: 6rem;

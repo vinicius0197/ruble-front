@@ -46,8 +46,11 @@ export default class Sidebar extends Component {
         </li>
 
         {/* <Link to={`/accounts`}> */}
-          <li className="sidebar__item--account" onClick={this.toggleClass}>
-            <div className={this.state.active ? "sidebar__icon-group--enabled" : "sidebar__icon-group"}>
+          <li className="sidebar__item--account">
+            <div
+            className={this.state.active ? "sidebar__icon-group--enabled" : "sidebar__icon-group"}
+            onClick={this.toggleClass}
+            >
               <FileIcon className="sidebar__icon"/>
               <span>Contas</span>   
             </div>
@@ -73,6 +76,9 @@ export default class Sidebar extends Component {
           <span>Minha Conta</span>
         </li>
       </ul>
+
+      <hr className="sidebar__divider"/>
+
       </nav>
     )
   }

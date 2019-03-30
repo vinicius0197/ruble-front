@@ -300,12 +300,21 @@ export default class BudgetTable extends Component {
     return (
       <div className="dashboard">
       <div className="options">
-        <button
-          className="options__add-category"
-          onClick={this.addCategory}
-        >
-          + Grupo de Categoria
-        </button>
+
+        <div className="options__button-list">
+          <button
+            className="options__add-category"
+            onClick={this.addCategory}
+          >
+            + Grupo de Categoria
+          </button>
+
+          <button
+            className="options__add-category"
+            >
+            + Nova Conta
+          </button>
+        </div>
 
         <div className="options__calendar">
           <LeftArrow className="options__left-arrow" />
