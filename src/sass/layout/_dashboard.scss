@@ -40,6 +40,7 @@
 
     &__item {
         display: flex;
+        background: $primary-color;
         align-items: center;
         width: 100%;
         font-size: 1.6rem;
@@ -48,6 +49,82 @@
         color: #98a6ad;
         cursor: pointer;
         transition: all .3s;
+        z-index: 10;
+    }
+
+    &__icon-group {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        font-size: 1.6rem;
+        padding: 2rem 2rem;
+        line-height: 1;
+        color: #98a6ad;
+        cursor: pointer;
+        transition: all .3s;
+    }
+
+    &__item--account {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.6rem;
+        line-height: 1;
+        color: #98a6ad;
+        cursor: pointer;
+        transition: all .3s;
+    }
+
+    &__icon-group--enabled {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        font-size: 1.6rem;
+        padding: 2rem 2rem;
+        line-height: 1;
+        color: #fff;
+        cursor: pointer;
+        transition: all .3s;
+        background-color: darken($primary-color, 2.5);
+    }
+
+    &__icon-group:hover {
+        background-color: darken($primary-color, 2.5);
+        color: #fff;
+    }
+
+    &__account-container {
+        font-size: 1.4rem;
+
+        &--disabled {
+            visibility: hidden;
+            max-height: 0;
+            z-index: 5;
+            transition: all 0.6s ease-out;
+        }
+
+        &--enabled {
+            visibility: visible;
+            max-height: 20rem;
+            z-index: 5;
+            transition: all 0.6s ease-out;
+        }
+    }
+
+    &__account-selector {
+        list-style: none;
+    }
+
+    &__account {
+        margin-left: 5rem;
+        transition: all .3s;
+        &:first-child {
+            margin-top: 1rem;
+        }
+        margin-bottom: 1.8rem;
+    }
+
+    &__account:hover {
+        color: #fff;
     }
 
     &__item:hover {

@@ -9,6 +9,15 @@ import { ReactComponent as BubbleIcon } from '../../img/bubble.svg';
 import { ReactComponent as HomeIcon } from '../../img/home3.svg';
 
 export default class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { active: false };
+  }
+
+  toggleClass = () => {
+    this.setState({active: !this.state.active});
+  }
+
   render() {
     return (
       <nav className="sidebar">
@@ -36,12 +45,24 @@ export default class Sidebar extends Component {
           <span>Relatórios</span>
         </li>
 
-        <Link to={`/accounts`}>
-          <li className="sidebar__item">
-            <FileIcon className="sidebar__icon"/>
-            <span>Contas</span>
+        {/* <Link to={`/accounts`}> */}
+          <li className="sidebar__item--account" onClick={this.toggleClass}>
+            <div className={this.state.active ? "sidebar__icon-group--enabled" : "sidebar__icon-group"}>
+              <FileIcon className="sidebar__icon"/>
+              <span>Contas</span>   
+            </div>
+
+            <div
+              className={this.state.active ? "sidebar__account-container--enabled" : "sidebar__account-container--disabled"}
+            >
+              <ul className="sidebar__account-selector">
+                <li className="sidebar__account">Account 1</li>
+                <li className="sidebar__account">Account 2</li>
+                <li className="sidebar__account">Account 3</li>
+              </ul>
+            </div>
           </li>
-        </Link>
+        {/* </Link> */}
 
         <li className="sidebar__item">
           <BubbleIcon className="sidebar__icon"/>
