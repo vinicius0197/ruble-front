@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+const axios = require('axios');
+
 export default class AccountPopup extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,24 @@ export default class AccountPopup extends Component {
     this.setState({ account_balance: event.target.value });
   }
 
+  createAccount = () => {
+    const newAccount = {
+      "account_name": this.state.account_name,
+      "account_type": this.state.account_type,
+      "balance": this.state.account_balance
+    };
+    axios.post('http://127.0.0.1:8000/account/', newAccount)
+      .catch((error) => {
+        console.log(error);
+      })
+    
+  }
+
+  handleSubmit = (event) => {
+    this.props.closePopup();
+    this.createAccount();
+    event.preventDefault();
+  }
 
   render() {
     return(
@@ -40,7 +60,7 @@ export default class AccountPopup extends Component {
           </div>
 
           <div className="popup__options">
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="popup__options--account-input">
                 <span><b>Que tipo de conta você quer adicionar?</b></span>
                 <select
