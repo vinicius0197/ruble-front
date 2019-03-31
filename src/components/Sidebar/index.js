@@ -8,14 +8,35 @@ import { ReactComponent as FileIcon } from '../../img/file-text.svg';
 import { ReactComponent as BubbleIcon } from '../../img/bubble.svg';
 import { ReactComponent as HomeIcon } from '../../img/home3.svg';
 
+const axios = require('axios');
+
 export default class Sidebar extends Component {
   constructor(props) {
     super(props);
-    this.state = { active: false };
+    this.state = {
+      active: false,
+      account_data: []
+    };
   }
 
   toggleClass = () => {
     this.setState({active: !this.state.active});
+  }
+
+  fetchData = () => {
+    axios.get('http://127.0.0.1:8000/account.json')
+      .then((response) => {
+        this.setState({
+          account_data: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  componentDidMount() {
+    this.fetchData();
   }
 
   render() {
@@ -45,27 +66,27 @@ export default class Sidebar extends Component {
           <span>Relatórios</span>
         </li>
 
-        {/* <Link to={`/accounts`}> */}
-          <li className="sidebar__item--account">
-            <div
-            className={this.state.active ? "sidebar__icon-group--enabled" : "sidebar__icon-group"}
-            onClick={this.toggleClass}
-            >
-              <FileIcon className="sidebar__icon"/>
-              <span>Contas</span>   
-            </div>
+        <li className="sidebar__item--account">
+          <div
+          className={this.state.active ? "sidebar__icon-group--enabled" : "sidebar__icon-group"}
+          onClick={this.toggleClass}
+          >
+            <FileIcon className="sidebar__icon"/>
+            <span>Contas</span>   
+          </div>
 
-            <div
-              className={this.state.active ? "sidebar__account-container--enabled" : "sidebar__account-container--disabled"}
-            >
-              <ul className="sidebar__account-selector">
-                <li className="sidebar__account">Account 1</li>
-                <li className="sidebar__account">Account 2</li>
-                <li className="sidebar__account">Account 3</li>
-              </ul>
-            </div>
-          </li>
-        {/* </Link> */}
+          <div
+            className={this.state.active ? "sidebar__account-container--enabled" : "sidebar__account-container--disabled"}
+          >
+            <ul className="sidebar__account-selector">
+              {this.state.account_data.map(item => {
+                return(
+                  <li className="sidebar__account">{item.account_name}</li>
+                )
+              })}
+            </ul>
+          </div>
+        </li>
 
         <li className="sidebar__item">
           <BubbleIcon className="sidebar__icon"/>
