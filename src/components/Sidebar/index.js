@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.css';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as BookIcon } from '../../img/book.svg';

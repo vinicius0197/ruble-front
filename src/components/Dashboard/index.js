@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.css';
 
 import AccountPopup from '../../components/Popup/index';
 import { ReactComponent as LeftArrow } from '../../img/circle-left.svg';

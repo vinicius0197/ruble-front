@@ -1,0 +1,123 @@
+/* SIDEBAR */
+.sidebar {
+    background-color: #36404e;
+    flex: 0 0 12%;
+    height: 100vh; 
+}
+.sidebar__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 70px;
+    text-align: center; 
+}
+.sidebar__home {
+    text-decoration: none; 
+}
+.sidebar__start {
+    color: #fff; 
+}
+.sidebar__end {
+    color: #7fc1fc; 
+}
+.sidebar__menu {
+    display: flex;
+    flex-direction: column;
+    list-style: none; 
+}
+.sidebar__item {
+    display: flex;
+    background: #36404e;
+    align-items: center;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 2rem 2rem;
+    line-height: 1;
+    color: #98a6ad;
+    cursor: pointer;
+    transition: all .3s;
+    z-index: 10; 
+}
+.sidebar__icon-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 2rem 2rem;
+    line-height: 1;
+    color: #98a6ad;
+    cursor: pointer;
+    transition: all .3s; 
+}
+.sidebar__item--account {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: #98a6ad;
+    cursor: pointer;
+    transition: all .3s; 
+}
+.sidebar__icon-group--enabled {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 2rem 2rem;
+    line-height: 1;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s;
+    background-color: #313a46; 
+}
+.sidebar__icon-group:hover {
+    background-color: #313a46;
+    color: #fff; 
+}
+.sidebar__account-container {
+    font-size: 1.4rem; }
+    .sidebar__account-container--disabled {
+    visibility: hidden;
+    max-height: 0;
+    z-index: 5;
+    transition: all 0.6s ease-out; }
+    .sidebar__account-container--enabled {
+    visibility: visible;
+    max-height: 20rem;
+    z-index: 5;
+    transition: all 0.6s ease-out; 
+}
+.sidebar__account-selector {
+    list-style: none; 
+}
+.sidebar__account {
+    margin-left: 5rem;
+    transition: all .3s;
+    margin-bottom: 1.8rem; 
+}
+.sidebar__account:first-child {
+    margin-top: 1rem; 
+}
+.sidebar__account:hover {
+    color: #fff; 
+}
+.sidebar__item:hover {
+    background-color: #313a46;
+    color: #fff; 
+}
+.sidebar__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1.5rem;
+    fill: #98a6ad;
+    transition: all .3s; 
+}
+.sidebar__item:hover .sidebar__icon {
+    fill: #fff; 
+}
+.sidebar__divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); 
+}

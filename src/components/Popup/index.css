@@ -1,0 +1,78 @@
+/* NEW ACCOUNT POPUP */
+.popup {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 3500;
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s; 
+}
+.popup__header {
+    display: flex; 
+}
+.popup__close {
+    color: #333;
+    position: absolute;
+    top: 0.8rem;
+    right: 2rem;
+    font-size: 3rem;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 1;
+    cursor: pointer; 
+}
+.popup__content {
+    width: 25%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    display: table;
+    overflow: hidden;
+    animation: popup .4s; 
+}
+.popup__title {
+    font-size: 1.7rem;
+    color: #88979d;
+    padding: 1.5rem 2rem; 
+}
+.popup__text {
+    font-size: 1.4rem;
+    padding: 1.5rem 2rem; 
+}
+.popup__options {
+    font-size: 1.4rem;
+    padding: 1.5rem 2rem; 
+}
+.popup__options--account-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem; 
+}
+.popup__text-input {
+    border: 2px solid #88979d;
+    padding: .5rem;
+    border-radius: .3rem; 
+}
+.popup__select {
+    border: 2px solid #88979d;
+    border-radius: .3rem; 
+}
+.popup__send-button {
+    border: none;
+    background-color: #167ccb;
+    border: 1px solid #167ccb;
+    font-size: 1.4rem;
+    font-weight: 400;
+    border-radius: 3px;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer; 
+}

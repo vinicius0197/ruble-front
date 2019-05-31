@@ -1,0 +1,45 @@
+/* NAVBAR */
+.navbar {
+    height: 6rem;
+    box-shadow: 0 0 8px 0 rgba(54, 64, 78, 0.09); 
+}
+.navbar__navigation {
+    width: 5rem;
+    height: 100%;
+    cursor: pointer; 
+}
+.navbar__icon {
+    position: relative;
+    margin-top: 3rem;
+    margin-left: 2rem;
+    transition: all .2s; 
+}
+.navbar__icon, .navbar__icon::before, .navbar__icon::after {
+    width: 1.9rem;
+    height: 2px;
+    background-color: #000;
+    display: inline-block; 
+}
+.navbar__icon::before, .navbar__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .2s; 
+}
+.navbar__icon::before {
+    top: -.6rem; 
+}
+.navbar__icon::after {
+    top: .6rem; 
+}
+.navbar__navigation:hover .navbar__icon {
+    background-color: #7fc1fc; 
+}
+.navbar__navigation:hover .navbar__icon::before {
+    top: -.7rem;
+    background-color: #7fc1fc; 
+}
+.navbar__navigation:hover .navbar__icon::after {
+    top: .7rem;
+    background-color: #7fc1fc; 
+}
