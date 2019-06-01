@@ -79,13 +79,15 @@ export default class Sidebar extends Component {
           <div
             className={this.state.active ? "sidebar__account-container--enabled" : "sidebar__account-container--disabled"}
           >
-            <ul className="sidebar__account-selector">
+            <div className="sidebar__account-selector">
               {this.state.account_data.map(item => {
                 return(
-                  <li className="sidebar__account">{item.account_name}</li>
+                  <Link to={`/transactions?account=` + item.account_name} style={{textDecoration: 'none', color: '#98a6ad'}}>
+                    <div className="sidebar__account">{item.account_name}</div>
+                  </Link>     
                 )
               })}
-            </ul>
+            </div>
           </div>
         </li>
 
@@ -97,10 +99,8 @@ export default class Sidebar extends Component {
           <HomeIcon className="sidebar__icon"/>
           <span>Minha Conta</span>
         </li>
+        <li className="sidebar__bottom"></li>
       </ul>
-
-      <hr className="sidebar__divider"/>
-
       </nav>
     )
   }

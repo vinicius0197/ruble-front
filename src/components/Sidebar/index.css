@@ -24,7 +24,8 @@
 .sidebar__menu {
     display: flex;
     flex-direction: column;
-    list-style: none; 
+    list-style: none;
+    height: 100vh;
 }
 .sidebar__item {
     display: flex;
@@ -76,31 +77,43 @@
     color: #fff; 
 }
 .sidebar__account-container {
-    font-size: 1.4rem; }
-    .sidebar__account-container--disabled {
+    font-size: 1.4rem; 
+}
+.sidebar__account-container--disabled {
     visibility: hidden;
     max-height: 0;
     z-index: 5;
-    transition: all 0.6s ease-out; }
-    .sidebar__account-container--enabled {
+    transition: all 0.6s ease-out; 
+}
+.sidebar__account-container--enabled {
     visibility: visible;
     max-height: 20rem;
     z-index: 5;
     transition: all 0.6s ease-out; 
 }
 .sidebar__account-selector {
-    list-style: none; 
+    list-style: none;
+    z-index: 5;
 }
 .sidebar__account {
     margin-left: 5rem;
     transition: all .3s;
-    margin-bottom: 1.8rem; 
+    margin-bottom: 1.8rem;
+    z-index: 5;
 }
+
+.sidebar__account:visited {
+    margin-left: 5rem;
+    transition: all .3s;
+    margin-bottom: 1.8rem;
+    text-decoration: none;
+}
+
 .sidebar__account:first-child {
     margin-top: 1rem; 
 }
 .sidebar__account:hover {
-    color: #fff; 
+    color: #fff;
 }
 .sidebar__item:hover {
     background-color: #313a46;
@@ -120,4 +133,18 @@
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); 
+}
+
+/* Hides account behind z-index */
+.sidebar__bottom {
+    width: 100%;
+    height: 200px;
+    background: #36404e;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 2rem 2rem;
+    line-height: 1;
+    z-index: 10; 
 }
