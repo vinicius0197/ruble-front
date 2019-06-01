@@ -6,9 +6,11 @@ import Sidebar from './components/Sidebar/index';
 import Navbar from './components/Navbar/index';
 
 import BudgetTableContainer from './containers/BudgetTableContainer';
+import Transaction from './components/Transaction';
 
-class App extends Component {
+export default class App extends Component {
   render() {
+    let params = new URLSearchParams(window.location.search);
     return (
       <div>
       <div className="wrapper">
@@ -19,6 +21,7 @@ class App extends Component {
           <main className="content">
             <Switch>
               <Route path="/budget" component={BudgetTableContainer} />
+              <Route path="/transactions" render={()=> <Transaction account={params.get("account")} />} />
             </Switch>
           </main>
         </div>
@@ -28,5 +31,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
