@@ -4,7 +4,6 @@
 }
 
 .account__header {
-    background-color: #001628;
     height: 6.5rem;
     display: flex;
     justify-content: space-between;
@@ -38,7 +37,6 @@
     width: 15rem;
     margin-top: 1rem;
     margin-left: 4.5rem;
-    color: white;
     text-align: center;
     font-size: 1.2rem;
     font-weight: 600;
@@ -54,19 +52,121 @@
     margin-top: 1rem;
     margin-right: 1rem;
     color: white;
-    border: 1px solid white;
+    background-color: #1576c2;
     text-align: center;
     vertical-align: middle;
     line-height: 4rem;
     border-radius: 0.7rem;
     font-size: 1.4rem;
+    cursor: pointer;
 }
 
 .account__buttons {
-    background-color: blue;
     height: 4rem;
+}
+
+.account__add-transaction {
+    color: #1576c2;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    width: 15rem;
 }
 
 .account__listing {
 
+}
+
+.table__header {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    color: #4c7079;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-align: right;
+    margin-bottom: 1rem;
+    margin-top: 1rem; 
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 0.5rem;
+}
+
+.table__header-select {
+    margin-left: 1rem;
+}
+
+.table__header-date {
+    flex: 0 0 45%;
+    text-align: left;
+    margin-left: 2.5rem; 
+}
+
+.table__header-category {
+    flex: 0 0 15%;
+    text-align: left;
+    margin-left: 0.8rem;
+}
+
+.table__header-memo {
+    flex: 0 0 15%;
+    text-align: left;
+    margin-left: 0.8rem;
+}
+
+.table__header-outflow {
+    flex: 0 0 15%;
+    text-align: left;
+    margin-left: 0.8rem;
+}
+
+.table__header-inflow {
+    flex: 0 0 15%;
+    text-align: left;
+    margin-left: 0.8rem;
+}
+
+.table__listing {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 0.8rem;
+}
+
+.table__listing-select {
+    margin-left: 1rem;
+}
+
+.table__listing-date {
+    flex: 0 0 45%;
+    text-align: left;
+    margin-left: 2.5rem; 
+}
+
+.table__listing-category {
+    flex: 0 0 15%;
+    text-align: left;
+    margin-left: 0.8rem;
+}
+
+.table__listing-memo {
+    flex: 0 0 15%;
+    text-align: left;
+    margin-left: 0.8rem;
+}
+
+.table__listing-outflow {
+    flex: 0 0 15%;
+    text-align: left;
+    margin-left: 0.8rem;
+}
+
+.table__listing-inflow {
+    flex: 0 0 15%;
+    text-align: left;
+    margin-left: 0.8rem;
 }
