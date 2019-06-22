@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import "./index.css";
 
+import { DatePicker } from 'antd';
+import "antd/dist/antd.css";
+
 export default class Transaction extends Component {
   constructor(props) {
     super(props);
   }
   render() {
+    const dateFormat = 'DD/MM/YYYY';
     console.log(this.props.account);
     return(
       <div className="account">
@@ -38,7 +42,9 @@ export default class Transaction extends Component {
 
           <ul className="table__listing">
             <input type="checkbox" className="table__listing-select"/>
-            <li className="table__listing-date">20/04/2019</li>
+            <li className="table__listing-date">
+              <DatePicker format={dateFormat} />
+            </li>
             <li className="table__listing-category">Comida</li>
             <li className="table__listing-memo">Compras do mês</li>
             <li className="table__listing-outflow">R$ 220</li>
