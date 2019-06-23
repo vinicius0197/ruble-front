@@ -56,7 +56,7 @@ export default class Transaction extends Component {
           <ul className="table__header">
             <input className="table__header-select" type="checkbox" />
             <li className="table__header-date">Data</li>
-            <li className="table__header-category">Categoria</li>
+            <li className="table__header-category--transaction">Categoria</li>
             <li className="table__header-memo">Memo</li>
             <li className="table__header-outflow">Outflow</li>
             <li className="table__header-inflow">Inflow</li>
