@@ -1,38 +1,31 @@
 import React, { Component } from 'react';
 import "./index.css";
 
-import { DatePicker, Select, Input } from 'antd';
-
-import "antd/dist/antd.css";
-
-const { Option } = Select;
+import TransactionRow from "./TransactionRow";
 
 export default class Transaction extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      category_elements: []
+      category_elements: [],
+      transactions: []
     }
   }
 
-  componentDidMount() {
-    this.buildElementsList();
-  }
+  addTransaction = () => {
+    const newTransaction = {
+      "date": "",
+      "category": "",
+      "memo": "",
+      "outflow": 0,
+      "inflow": 0
+    };
 
-  buildElementsList = () => {
-    let elementArray = this.state.category_elements;
-    this.props.data.map(category => {
-      category.elements.map(item => {
-        elementArray.push(item.element_name);
-      });
-    });
-    this.setState({ category_elements: elementArray });
+    this.setState({ transactions: [...this.state.transactions, newTransaction] });
   }
 
   render() {
-    const dateFormat = 'DD/MM/YYYY';
-
     return(
       <div className="account">
         <div className="account__header">
@@ -49,7 +42,7 @@ export default class Transaction extends Component {
         </div>
         <div className="account__buttons">
           <div className="account__add-transaction">
-            <span>+ Adicionar Transação</span>
+            <span onClick={this.addTransaction}>+ Adicionar Transação</span>
           </div>
         </div>
         <div className="account__listing">
@@ -62,33 +55,32 @@ export default class Transaction extends Component {
             <li className="table__header-inflow">Inflow</li>
           </ul>
 
-          <ul className="table__listing">
-            <input type="checkbox" className="table__listing-select"/>
-            <li className="table__listing-date">
-              <DatePicker format={dateFormat} />
-            </li>
-            <li className="table__listing-category">
-            <Select
-              style={{ width: '85%' }}
-              placeholder="Escolha a categoria"
-            >
-              {this.state.category_elements.map(item => {
-                return(
-                  <Option key={'key'+item} value={item}>{item}</Option>
-                )
-              })}
-            </Select>
-            </li>
-            <li className="table__listing-memo">
-              <Input placeholder="Memo" />
-            </li>
-            <li className="table__listing-outflow">
-              <Input style={{ width: '40%' }} placeholder="Outflow" />
-            </li>
-            <li className="table__listing-inflow">
-              <Input style={{ width: '40%' }} placeholder="Inflow" />
-            </li>
-          </ul>
+          {/* <TransactionRow
+            data={this.props.data}
+            transaction_date='20/04/2012'
+            category_name='Minha categoria'
+            memo='exemplo'
+            outflow='225'
+            inflow='0'
+          /> */}
+
+          {this.state.transactions.length === 0 ?
+            <div>Não há transações</div>
+            :
+            this.state.transactions.map(transaction => {
+              return(
+                <TransactionRow
+                  data={this.props.data}
+                  transaction_date={transaction.date}
+                  category_name={transaction.category}
+                  memo={transaction.memo}
+                  outflow={transaction.outflow}
+                  inflow={transaction.inflow}
+              />
+              )
+            })
+          }
+
         </div>
       </div>
     );
