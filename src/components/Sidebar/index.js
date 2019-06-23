@@ -82,8 +82,8 @@ export default class Sidebar extends Component {
             <div className="sidebar__account-selector">
               {this.state.account_data.map(item => {
                 return(
-                  <Link to={{pathname: "/transactions", search: "?account=" + item.account_name}} style={{textDecoration: 'none', color: '#98a6ad'}}>
-                    <div className="sidebar__account">{item.account_name}</div>
+                  <Link to={{pathname: "/transactions", search: "?account=" + item.account_name}} key={'key'+ item.account_name} style={{textDecoration: 'none', color: '#98a6ad'}}>
+                    <div className="sidebar__account" >{item.account_name}</div>
                   </Link>     
                 )
               })}

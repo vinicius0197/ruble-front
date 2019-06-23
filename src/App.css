@@ -31,3 +31,7 @@ html {
 .content {
   background-color: #f8f8f8;
   height: 93vh; }
+
+.spinner {
+  margin: 0 auto;
+}

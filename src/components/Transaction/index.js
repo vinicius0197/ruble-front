@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
 import "./index.css";
 
-import { DatePicker } from 'antd';
+import { DatePicker, Select } from 'antd';
+
 import "antd/dist/antd.css";
+
+const { Option } = Select;
 
 export default class Transaction extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      category_elements: []
+    }
   }
+
+  componentDidMount() {
+    this.buildElementsList();
+  }
+
+  buildElementsList = () => {
+    let elementArray = this.state.category_elements;
+    this.props.data.map(category => {
+      category.elements.map(item => {
+        elementArray.push(item.element_name);
+      });
+    });
+    this.setState({ category_elements: elementArray });
+  }
+
   render() {
     const dateFormat = 'DD/MM/YYYY';
-    console.log(this.props.account);
+
     return(
       <div className="account">
         <div className="account__header">
@@ -45,7 +67,18 @@ export default class Transaction extends Component {
             <li className="table__listing-date">
               <DatePicker format={dateFormat} />
             </li>
-            <li className="table__listing-category">Comida</li>
+            <li className="table__listing-category">
+            <Select
+              style={{ width: '85%' }}
+              placeholder="Escolha a categoria"
+            >
+              {this.state.category_elements.map(item => {
+                return(
+                  <Option key={'key'+item} value={item}>{item}</Option>
+                )
+              })}
+            </Select>
+            </li>
             <li className="table__listing-memo">Compras do mês</li>
             <li className="table__listing-outflow">R$ 220</li>
             <li className="table__listing-inflow"></li>

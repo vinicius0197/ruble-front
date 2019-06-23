@@ -73,7 +73,7 @@
     margin-top: 1rem; 
 }
 .table__header-category {
-    flex: 0 0 55%;
+    flex: 0 0 55% !important;
     text-align: left;
     margin-left: 0.8rem; 
 }
@@ -98,7 +98,8 @@
     font-size: 1.4rem;
     padding: 0.8rem 1rem;
     border-top: 1px solid #2ec0c4;
-    text-align: right; 
+    text-align: right;
+    margin-bottom: 0 !important;
 }
 .table__category-group:hover > .table__category-name > .table__category-form > .table__category-input--header {
     border: 1px dashed #d8d8d8; 
@@ -206,6 +207,7 @@
     background-color: #fff;
     border-top: 1px solid #eaeaea;
     border-bottom: 1px solid #eaeaea; 
+    margin-bottom: 0 !important;
 }
 .table__category-element:hover {
     background-color: #fafafa; 
