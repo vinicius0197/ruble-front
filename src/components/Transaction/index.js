@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./index.css";
 
-import { DatePicker, Select } from 'antd';
+import { DatePicker, Select, Input } from 'antd';
 
 import "antd/dist/antd.css";
 
@@ -79,9 +79,15 @@ export default class Transaction extends Component {
               })}
             </Select>
             </li>
-            <li className="table__listing-memo">Compras do mês</li>
-            <li className="table__listing-outflow">R$ 220</li>
-            <li className="table__listing-inflow"></li>
+            <li className="table__listing-memo">
+              <Input placeholder="Memo" />
+            </li>
+            <li className="table__listing-outflow">
+              <Input style={{ width: '40%' }} placeholder="Outflow" />
+            </li>
+            <li className="table__listing-inflow">
+              <Input style={{ width: '40%' }} placeholder="Inflow" />
+            </li>
           </ul>
         </div>
       </div>

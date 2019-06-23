@@ -99,13 +99,13 @@
 }
 
 .table__header-date {
-    flex: 0 0 45%;
+    flex: 0 0 15%;
     text-align: left;
-    margin-left: 2.5rem; 
+    margin-left: 3.5rem; 
 }
 
 .table__header-category--transaction {
-    flex: 0 0 15%;
+    flex: 0 0 25%;
     text-align: left;
     margin-left: 0.8rem;
 }
@@ -142,13 +142,13 @@
 }
 
 .table__listing-date {
-    flex: 0 0 45%;
+    flex: 0 0 15%;
     text-align: left;
     margin-left: 2.5rem; 
 }
 
 .table__listing-category {
-    flex: 0 0 15%;
+    flex: 0 0 25%;
     text-align: left;
     margin-left: 0.8rem;
 }
@@ -169,4 +169,46 @@
     flex: 0 0 15%;
     text-align: left;
     margin-left: 0.8rem;
+}
+
+/* OVERWRITING ANT CSS */
+
+.ant-calendar-picker-input:not(:focus) {
+    background-color: transparent;
+    border: 1px dashed transparent;
+    color: #333333;
+}
+
+.ant-calendar-picker-input:hover {
+    background-color: #fff;
+    border: 1px dashed #d8d8d8 !important;
+    color: #333333;
+}
+
+.anticon:not(:focus) {
+    visibility: hidden;
+}
+
+.ant-select-selection--single:not(:focus) {
+    background-color: transparent !important;
+    border: 1px dashed transparent !important;
+    color: #222020;
+}
+
+.ant-select-selection--single:hover {
+    background-color: #fff !important;
+    border: 1px dashed #d8d8d8 !important;
+    color: #222020;
+}
+
+.ant-input:not(:focus) {
+    background-color: transparent !important;
+    border: 1px dashed transparent !important;
+    color: #222020;
+}
+
+.ant-input:hover {
+    background-color: #fff !important;
+    border: 1px dashed #d8d8d8 !important;
+    color: #222020;
 }
